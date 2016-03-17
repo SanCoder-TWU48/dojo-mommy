@@ -1,23 +1,29 @@
+import java.util.Arrays;
+
 public class MommyParser {
 
     private static final String MOMMY_STRING = "mommy";
-    private static final char[] VOWELS = new char[]{'a', 'e', 'i', 'o', 'u'};
+    private static final String[] VOWELS = new String[]{"a", "e", "i", "o", "u"};
 
 
     public String stringParser(String input) {
 
-        if (isVowelInclude(input)) {
-            return input.replace(,MOMMY_STRING);
+        if (!isVowelEnough(input)) {
+            return input;
         }
-
-        return input;
+        String[] inputChars = input.split("");
+        String output = "";
+        for (String inputChar : inputChars) {
+            output += Arrays.asList(VOWELS).contains(inputChar.toLowerCase()) ? MOMMY_STRING : inputChar;
+        }
+        return output;
     }
 
-    private boolean isVowelInclude(String input) {
+    private boolean isVowelEnough(String input) {
         int vowelCount = 0;
         for (char inputChar : input.toLowerCase().toCharArray()) {
-            for (char vowel : VOWELS) {
-                if (inputChar == vowel) {
+            for (String vowel : VOWELS) {
+                if (vowel.equals(Character.toString(inputChar))) {
                     vowelCount++;
                 }
             }
