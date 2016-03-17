@@ -39,4 +39,10 @@ public class MommyTest {
         String mommyString = parser.stringParser("ah");
         assertEquals("mommyh", mommyString);
     }
+
+    @Test
+    public void shouldBeAbleToReturnOneMommyGivenAnStringWithTwoVowelsInARowWith50Percent() throws Exception {
+        String mommyString = parser.stringParser("woo");
+        assertEquals("wmommy", mommyString);
+    }
 }

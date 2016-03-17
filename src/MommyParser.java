@@ -13,13 +13,25 @@ public class MommyParser {
         }
         String[] inputChars = input.split("");
         String output = "";
-        for (String inputChar : inputChars) {
-            output += Arrays.asList(VOWELS).contains(inputChar.toLowerCase()) ? MOMMY_STRING : inputChar;
+        for (int i = 0; i < inputChars.length; i++) {
+            if (Arrays.asList(VOWELS).contains(inputChars[i].toLowerCase())) {
+                output += MOMMY_STRING;
+            } else {
+                output += inputChars[i];
+            }
         }
-        return output;
+        return mommySinglefy(output);
+    }
+
+    private String mommySinglefy(String input) {
+        if (input.contains(MOMMY_STRING + MOMMY_STRING))
+            return mommySinglefy(input.replace(MOMMY_STRING+MOMMY_STRING, MOMMY_STRING));
+        else
+            return input;
     }
 
     private boolean isVowelEnough(String input) {
+
         int vowelCount = 0;
         for (char inputChar : input.toLowerCase().toCharArray()) {
             for (String vowel : VOWELS) {
@@ -28,11 +40,8 @@ public class MommyParser {
                 }
             }
         }
-
         int percent = (100 * vowelCount) / input.length();
-
         return percent >= 30;
-
     }
 
 }
