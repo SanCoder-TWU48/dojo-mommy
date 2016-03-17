@@ -45,4 +45,10 @@ public class MommyTest {
         String mommyString = parser.stringParser("woo");
         assertEquals("wmommy", mommyString);
     }
+
+    @Test
+    public void shouldBeAbleToReturnTwoMommyGivenAnStringWithTwoSplitVowelsWith50Percent() throws Exception {
+        String mommyString = parser.stringParser("holo");
+        assertEquals("hmommylmommy", mommyString);
+    }
 }
